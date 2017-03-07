@@ -1,11 +1,14 @@
-from fabric.api import *
-import fabric.contrib.project as project
+from datetime import datetime
 import os
 import shutil
 import sys
 import SocketServer
 
+from fabric.api import *
+import fabric.contrib.project as project
+
 from pelican.server import ComplexHTTPRequestHandler
+
 
 # Local path configuration (can be absolute or relative to fabfile)
 env.deploy_path = 'output'
@@ -25,6 +28,22 @@ env.github_pages_branch = "gh-pages"
 
 # Port for `serve`
 PORT = 8000
+
+TEMPLATE = """
+{title}
+{hashes}
+:date: {year}-{month:02}-{day:02} {hour}:{minute:02d}
+:tags:
+:category:
+:slug: {slug}
+:summary:
+:status: draft
+
+
+
+"""
+
+
 
 def clean():
     """Remove generated files"""
@@ -90,3 +109,25 @@ def gh_pages():
     """Publish to GitHub Pages"""
     rebuild()
     local("ghp-import -b {github_pages_branch} {deploy_path} -p".format(**env))
+
+def make_entry():
+    today = datetime.today()
+    f_create = "content/{}-{:0>2}-{:0>2}.rst".format(
+        today.year, today.month, today.day)
+
+    title= "{} {} {} {}".format(today.strftime("%a"), today.day,
+                                today.strftime("%b"),
+                                today.year)
+    slug = title
+    t = TEMPLATE.strip().format(title=title,
+                                hashes='#'
+                                * len(title),
+                                year=today.year,
+                                month=today.month,
+                                day=today.day,
+                                hour=today.hour,
+                                minute=today.minute,
+                                slug=slug)
+    with open(f_create, 'w') as w:
+        w.write(t)
+        print("File created -> " + f_create)

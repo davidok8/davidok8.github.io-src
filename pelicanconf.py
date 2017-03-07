@@ -33,3 +33,23 @@ DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
+
+
+PLUGIN_PATHS = ['./plugins']
+PLUGINS = ['latex']
+MD_EXTENSIONS =['codehilite', 'extra', 'smarty', 'toc']
+
+
+STATIC_PATHS = ['extra', 'images', 'pdfs']
+EXTRA_PATH_METADATA = {
+    'extra/robots.txt': {'path': 'robots.txt'},
+    'extra/favicon.ico': {'path': 'favicon.ico'},
+    'extra/htaccess': {'path': '.htaccess'}
+}
+
+
+THEME = 'themes/built-texts'
+
+COLOPHON = True
+COLOPHON_TITLE = 'About'
+COLOPHON_CONTENT = "Mainly...."
