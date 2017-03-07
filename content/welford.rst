@@ -2,20 +2,26 @@ Welford's Recursive Variance Formula
 ####################################
 
 :date: 2017-03-07 16:45
-:tags:
-:category:
+:tags: calculus
+:category: maths
 :slug: Welford
-:summary:
+:summary: Calculus details of Welford's recursive variance formula
 
 
-We detail the calculation of the recursive formula.
+We detail the calculation of the recursive formula:
 
 .. math::
 
    S_n = \sum_{i=1}^n (x_i - \bar{x}_n)^2
 
+We introduce :math:`\bar{x}_{n-1}` to relate :math:`S_n` with :math:`S_{n-1}`:
+
+.. math::
    S_n = \sum_{i=1}^n ((x_i - \bar{x}_{n-1}) + (\bar{x}_{n-1} - \bar{x}_n))^2
 
+We expand the expression:
+
+.. math::
    S_n = \sum_{i=1}^n (x_i - \bar{x}_{n-1})^2 + n(\bar{x}_{n-1} - \bar{x}_n)^2
          - 2 (\bar{x}_{n-1} - \bar{x}_n) \sum_{i=1}^n (x_i - \bar{x}_{n-1})
 
