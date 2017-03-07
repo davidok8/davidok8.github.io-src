@@ -1,14 +1,12 @@
-Tue 7 Mar 2017
-##############
+Welford's Recursive Variance Formula
+####################################
+
 :date: 2017-03-07 16:45
 :tags:
 :category:
-:slug: Tue 7 Mar 2017
+:slug: Welford
 :summary:
 
-
-Welford's Recursive Variance Formula
-====================================
 
 We detail the calculation of the recursive formula.
 
