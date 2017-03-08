@@ -59,22 +59,21 @@ Substituting back :math:`A_{m,n}` and :math:`B_{m,n}` in :math:`S_{m,n}`
 
 .. math::
 
-   S_{1,m+n} = S_{1,m} + S_{m+1,m+n} + \frac{1}{(m+n)^2} \left( 
+   S_{1,m+n} = S_{1,m} + S_{m+1,m+n} + \frac{1}{(m+n)^2} \left(
       \frac{(m+n)n}{m} T_{1,m}^2
     + \frac{(m+n)n}{m} T_{m+1,m+n}^2
     - 2(m+n) T_{1,m} T_{m+1,m+n}
    \right)
 
-   S_{1,m+n} = S_{1,m} + S_{m+1,m+n} + \frac{1}{m+n} \left( 
+   S_{1,m+n} = S_{1,m} + S_{m+1,m+n} + \frac{1}{m+n} \left(
       \frac{n}{m} T_{1,m}^2
     + \frac{m}{n} T_{m+1,m+n}^2
-    - 2 T_{1,m} T_{m+1,m+n}
    \right)
 
-   S_{1,m+n} = S_{1,m} + S_{m+1,m+n} + \frac{1}{m+n} \left( 
+   S_{1,m+n} = S_{1,m} + S_{m+1,m+n} + \frac{1}{m+n} \left(
       \sqrt{\frac{n}{m}} T_{1,m} - \sqrt{\frac{m}{n}} T_{m+1,m+n}
    \right)^2
 
-   S_{1,m+n} = S_{1,m} + S_{m+1,m+n} + \frac{m}{(m+n)n} \left( 
+   S_{1,m+n} = S_{1,m} + S_{m+1,m+n} + \frac{m}{(m+n)n} \left(
       \frac{n}{m} T_{1,m} - T_{m+1,m+n}
    \right)^2
