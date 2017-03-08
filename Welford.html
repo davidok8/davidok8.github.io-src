@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <title>Welford's Recursive Variance Formula - My Blog</title>
+    <meta name="description" content="">
+    <meta name="author" content="David">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="/theme/html5.js"></script>
+    <![endif]-->
+
+
+    <!-- Le styles -->
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
+    <link href="/theme/local.css" rel="stylesheet">
+    <link href="/theme/pygments.css" rel="stylesheet">
+    <link href="/theme/font-awesome.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Gudea:400,400italic|Alegreya+SC' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+<header class="blog-header">
+  <div class="container">
+    <div class="row-fluid">
+      <div class="span9">
+	<a href="" class="brand">My Blog</a>
+      </div>
+
+      <div class="span3" id="blog-nav">
+	<ul class="nav nav-pills pull-right">
+	    <li  class="active" >
+	      <a href="/category/maths.html ">maths</a>
+	</ul>
+      </div>
+    </div> <!-- End of fluid row-->
+  </div>   <!-- End of Container-->
+</header>
+    
+<div class="container">
+    <div class="content">
+    <div class="row-fluid">
+
+        <div class="span10">
+    <div class='article'>
+      <div class="row-fluid">
+           <div class="content-title span9">
+             <h1>Welford's Recursive Variance Formula</h1>
+           </div>
+      </div>
+    <div class="row-fluid">
+      <div class="span2">
+<p>Tue 07 March 2017 </p>
+
+<p style="text-align: left;">
+Filed under <a href="/category/maths.html">maths</a>
+</p>
+<p style="text-align: left;">
+ 
+    Tags <a href="/tag/calculus.html">calculus</a> </p>
+<p>
+</p>
+      </div>
+      
+      <div class="span8">
+	<p>We detail the calculation of the recursive formula:</p>
+<div class="math">
+\begin{equation*}
+S_n = \sum_{i=1}^n (x_i - \bar{x}_n)^2
+\end{equation*}
+</div>
+<p>We introduce <span class="math">\(\bar{x}_{n-1}\)</span> to relate <span class="math">\(S_n\)</span> with <span class="math">\(S_{n-1}\)</span>:</p>
+<div class="math">
+\begin{equation*}
+S_n = \sum_{i=1}^n ((x_i - \bar{x}_{n-1}) + (\bar{x}_{n-1} - \bar{x}_n))^2
+\end{equation*}
+</div>
+<p>We expand the expression:</p>
+<div class="math">
+\begin{equation*}
+S_n = \sum_{i=1}^n (x_i - \bar{x}_{n-1})^2 + n(\bar{x}_{n-1} - \bar{x}_n)^2
+      - 2 (\bar{x}_{n-1} - \bar{x}_n) \sum_{i=1}^n (x_i - \bar{x}_{n-1})
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+S_n = \sum_{i=1}^n (x_i - \bar{x}_{n-1})^2 + n(\bar{x}_{n-1} - \bar{x}_n)^2
+      - 2 n (\bar{x}_{n-1} - \bar{x}_n) (\bar{x}_n - \bar{x}_{n-1})
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+S_n = \sum_{i=1}^n (x_i - \bar{x}_{n-1})^2 - n(\bar{x}_{n-1} - \bar{x}_n)^2
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+S_n = S_{n-1} + (x_n - \bar{x}_{n-1})^2 - n (\bar{x}_{n-1} - \bar{x}_n)^2
+\end{equation*}
+</div>
+<p>Using the relation between the mean <span class="math">\(\bar{x}_n\)</span> and <span class="math">\(\bar{x}_{n-1}\)</span></p>
+<div class="math">
+\begin{equation*}
+n \bar{x}_n = (n-1) \bar{x}_{n-1} + x_n
+\end{equation*}
+</div>
+<p>Then observing the following equality:</p>
+<div class="math">
+\begin{equation*}
+x_n - \bar{x}_{n-1} = n (\bar{x}_n - \bar{x}_{n-1})
+\end{equation*}
+</div>
+<p>Using the first equality, we can reduce the last two terms in <span class="math">\(S_n\)</span></p>
+<div class="math">
+\begin{equation*}
+S_n = S_{n-1} + n(n-1) (\bar{x}_n - \bar{x}_{n-1})^2
+\end{equation*}
+</div>
+<p>Then by reordering a bit:</p>
+<div class="math">
+\begin{equation*}
+S_n = S_{n-1} + n (\bar{x}_n - \bar{x}_{n-1}) \times (n-1) (\bar{x}_n - \bar{x}_{n-1})
+\end{equation*}
+</div>
+<p>We recognize:</p>
+<div class="math">
+\begin{equation*}
+S_n = S_{n-1} + (x_n - \bar{x}_{n-1}) \times (n-1) (\bar{x}_n - \bar{x}_{n-1})
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+S_n = S_{n-1} + (x_n - \bar{x}_{n-1}) \times \frac{n-1}{n} (x_n - \bar{x}_{n-1})
+\end{equation*}
+</div>
+<p>But we know</p>
+<div class="math">
+\begin{equation*}
+\bar{x}_{n-1} = \frac{n \bar{x}_n - x_n}{n-1}
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+x_n - \bar{x}_{n-1} = \frac{n}{n-1} (x_n - \bar{x}_n)
+\end{equation*}
+</div>
+<p>We replace the rightmost term in <span class="math">\(S_n\)</span> and we finally get</p>
+<div class="math">
+\begin{equation*}
+S_n = S_{n-1} + (x_n - \bar{x}_{n-1}) (x_n - \bar{x}_n)
+\end{equation*}
+</div>
+<p>This is the expected formula as displayed in wikipedia.</p>
+<script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+	<hr />
+      </div>
+    </div>
+    <div class="span10">
+      <h3>Comments</h3>
+    
+    </div>  
+    </div>
+        </div>
+        
+        
+    </div>     </div> </div>
+
+<!--footer-->
+<div class="container">
+  <div class="well" style="background-color: #E9EFF6">
+    <div id="blog-footer">
+      <div class="row-fluid">
+<div class="span8" id="colophon">
+  <h2 align="center">About</h2>
+  <p align="justify"> Blog </p>
+</div>
+	<div class="site-nav span2" align="center">
+          <ul class="nav nav-list" id="site-links">
+            <li class="nav-header"> 
+              Site
+            </li>
+            <li><a href=""><i class="icon-home" style="color: #1f334b">
+                </i>Home</a></li>
+            <li><a href="/archives.html"><i class="icon-list" style="color: #1f334b">
+                </i>Archives</a></li>
+	    <li><a href="/tags.html"><i class="icon-tags" style="color: #1f334b">
+                </i>Tags</a></li>
+	    
+	  </ul>
+
+        </div>
+
+      </div> <!--end of fluid row-->
+    </div> <!--end of blog-footer-->
+    <hr />
+    <p align="center"><a href="">My Blog</a>
+      &copy; David
+    Powered by <a href="https://github.com/getpelican/pelican">Pelican</a> and
+        <a href="https://twitter.github.com/bootstrap">Twitter Bootstrap</a>. 
+        Icons by <a href="https://fortawesome.github.com/Font-Awesome">Font Awesome</a> and 
+        <a href="https://gregoryloucas.github.com/Font-Awesome-More">Font Awesome More</a></p>
+
+  </div> <!--end of well -->
+</div> <!--end of container -->
+
+<!--/footer-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+
+
+
+</body>
+</html>

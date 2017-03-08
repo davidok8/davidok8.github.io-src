@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <title>My Blog <small>David</small></title>
+    <meta name="description" content="">
+    <meta name="author" content="David">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+    <script src="/theme/html5.js"></script>
+    <![endif]-->
+
+
+    <!-- Le styles -->
+    <link href="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
+    <link href="/theme/local.css" rel="stylesheet">
+    <link href="/theme/pygments.css" rel="stylesheet">
+    <link href="/theme/font-awesome.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Gudea:400,400italic|Alegreya+SC' rel='stylesheet' type='text/css'>
+
+</head>
+
+<body>
+<header class="blog-header">
+  <div class="container">
+    <div class="row-fluid">
+      <div class="span9">
+	<a href="" class="brand">My Blog</a>
+      </div>
+
+      <div class="span3" id="blog-nav">
+	<ul class="nav nav-pills pull-right">
+	    <li >
+	      <a href="/category/maths.html ">maths</a>
+	</ul>
+      </div>
+    </div> <!-- End of fluid row-->
+  </div>   <!-- End of Container-->
+</header>
+    
+<div class="container">
+    <div class="content">
+    <div class="row-fluid">
+
+        <div class="span10">
+        
+
+        
+
+    <div class='row-fluid''>
+        <div class="article-title span9">
+            <a href="/Youngs and Cramer.html"><h1>Youngs and Cramer Recursive Formula</h1></a>
+        </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2">
+<p>Tue 07 March 2017 </p>
+
+<p style="text-align: left;">
+Filed under <a href="/category/maths.html">maths</a>
+</p>
+<p style="text-align: left;">
+ 
+    Tags <a href="/tag/calculus.html">calculus</a> </p>
+<p>
+</p>
+      </div>
+      <div class="article-content span8">
+	<div class="math">
+\begin{equation*}
+S_{1, m+n} = \sum_{i=1}^{m+n} (x_i - \frac{1}{m+n} T_{1, m+n})^2
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+S_{1, m+n} =
+ \underbrace{\sum_{i=1}^{m} (x_i - \frac{1}{m+n} T_{1,m+n})^2}_{A_{m,n}} +
+ \underbrace{\sum_{i=m+1}^{m+n} (x_i - \frac{1}{m+n} T_{1, m+n})^2}_{B_{m,n}}
+\end{equation*}
+</div>
+<p>Denote by</p>
+<div class="math">
+\begin{equation*}
+A_{m,n} = \sum_{i=1}^{m} (x_i - \frac{1}{m} T_{1, m+n})^2
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+B_{m,n} = \sum_{i=m+1}^{m+n} (x_i - \frac{1}{m} T_{1, m+n})^2
+\end{equation*}
+</div>
+<p>Then we expand <span class="math">\(A_{m,n}\)</span> by introducing <span class="math">\(\frac{1}{m} T_{1,m}\)</span></p>
+<div class="math">
+\begin{equation*}
+A_{m,n} = \sum_{i=1}^{m} (x_i - \frac{1}{m} T_{1,m} +
+\frac{1}{m} T_{1,m} - \frac{1}{m+n} T_{1, m+n})^2
+\end{equation*}
+</div>
+<p>We end up with</p>
+<div class="math">
+\begin{equation*}
+A_{m,n} = S_{1,m} + m (\frac{1}{m} T_{1,m} - \frac{1}{m+n} T_{1,m+n})^2
+\end{equation*}
+</div>
+<p>Then using <span class="math">\(T_{1,m+n} = T_{1,m} + T_{m+1,n+1}\)</span></p>
+<div class="math">
+\begin{equation*}
+A_{m,n} = S_{1,m} + \frac{m}{(m+n)^2} (\frac{n}{m} T_{1,m} - T_{m+1,m+n})^2
+\end{equation*}
+</div>
+<p>Likewise we expand <span class="math">\(B_{m,n}\)</span> by introducing <span class="math">\(\frac{1}{n} T_{m+1,m+n}\)</span></p>
+<div class="math">
+\begin{equation*}
+B_{m,n} = S_{m+1,m+n} + n (\frac{1}{n} T_{m+1,m+n} - \frac{1}{m+n} T_{1,m+n})^2
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+B_{m,n} = S_{m+1,m+n} + \frac{n}{(m+n)^2} (\frac{m}{n} T_{m+1,m+n} - T_{1,m})^2
+\end{equation*}
+</div>
+<p>Substituting back <span class="math">\(A_{m,n}\)</span> and <span class="math">\(B_{m,n}\)</span> in <span class="math">\(S_{m,n}\)</span></p>
+<div class="math">
+\begin{equation*}
+S_{1,m+n} = S_{1,m} + S_{m+1,m+n} + \frac{1}{(m+n)^2} \left(
+   \frac{(m+n)n}{m} T_{1,m}^2
+ + \frac{(m+n)n}{m} T_{m+1,m+n}^2
+ - 2(m+n) T_{1,m} T_{m+1,m+n}
+\right)
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+S_{1,m+n} = S_{1,m} + S_{m+1,m+n} + \frac{1}{m+n} \left(
+   \frac{n}{m} T_{1,m}^2
+ + \frac{m}{n} T_{m+1,m+n}^2
+\right)
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+S_{1,m+n} = S_{1,m} + S_{m+1,m+n} + \frac{1}{m+n} \left(
+   \sqrt{\frac{n}{m}} T_{1,m} - \sqrt{\frac{m}{n}} T_{m+1,m+n}
+\right)^2
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+S_{1,m+n} = S_{1,m} + S_{m+1,m+n} + \frac{m}{(m+n)n} \left(
+   \frac{n}{m} T_{1,m} - T_{m+1,m+n}
+\right)^2
+\end{equation*}
+</div>
+<script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    var location_protocol = (false) ? 'https' : document.location.protocol;
+    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script> 
+	<a class="btn btn-mini xsmall" href="/Youngs and Cramer.html">
+          <i class="icon-comment"></i> Comment </a>
+	<hr />
+      </div>
+      
+    </div>
+    
+
+ 
+        
+
+
+
+    <div class='row-fluid'>
+      <div class='article-title span9'> 
+        <a href="/Welford.html"><h1>Welford's Recursive Variance Formula</h1></a>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2">
+<p>Tue 07 March 2017 </p>
+
+<p style="text-align: left;">
+Filed under <a href="/category/maths.html">maths</a>
+</p>
+<p style="text-align: left;">
+ 
+    Tags <a href="/tag/calculus.html">calculus</a> </p>
+<p>
+</p>
+      </div>
+      <div class="summary span8">
+	<p class="first last">Calculus details of Welford's recursive variance formula</p>
+ 
+	<a class="btn btn-mini xsmall" href="/Welford.html">
+          <i class="icon-plus-sign"></i> Read More </a>
+	<hr />
+      </div>
+      
+    </div>
+      
+<div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="/author/david.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>
+
+ 
+  
+        </div>
+        
+        
+    </div>     </div> </div>
+
+<!--footer-->
+<div class="container">
+  <div class="well" style="background-color: #E9EFF6">
+    <div id="blog-footer">
+      <div class="row-fluid">
+<div class="span8" id="colophon">
+  <h2 align="center">About</h2>
+  <p align="justify"> Blog </p>
+</div>
+	<div class="site-nav span2" align="center">
+          <ul class="nav nav-list" id="site-links">
+            <li class="nav-header"> 
+              Site
+            </li>
+            <li><a href=""><i class="icon-home" style="color: #1f334b">
+                </i>Home</a></li>
+            <li><a href="/archives.html"><i class="icon-list" style="color: #1f334b">
+                </i>Archives</a></li>
+	    <li><a href="/tags.html"><i class="icon-tags" style="color: #1f334b">
+                </i>Tags</a></li>
+	    
+	  </ul>
+
+        </div>
+
+      </div> <!--end of fluid row-->
+    </div> <!--end of blog-footer-->
+    <hr />
+    <p align="center"><a href="">My Blog</a>
+      &copy; David
+    Powered by <a href="https://github.com/getpelican/pelican">Pelican</a> and
+        <a href="https://twitter.github.com/bootstrap">Twitter Bootstrap</a>. 
+        Icons by <a href="https://fortawesome.github.com/Font-Awesome">Font Awesome</a> and 
+        <a href="https://gregoryloucas.github.com/Font-Awesome-More">Font Awesome More</a></p>
+
+  </div> <!--end of well -->
+</div> <!--end of container -->
+
+<!--/footer-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+
+
+
+</body>
+</html>
