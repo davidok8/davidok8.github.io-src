@@ -102,8 +102,8 @@ Summing the two terms:
 
    C_{1,m+n} = C_{1,m} + C_{m+1,m+n} +
     \frac{1}{(m+n)}
-    (\sqrt(\frac{n}{m}) X_{1,m} - sqrt{\frac{m}{n}} X_{m+1,m+n})
-    (\sqrt(\frac{n}{m}) Y_{1,m} - sqrt{\frac{m}{n}} Y_{m+1,m+n})
+    (\sqrt(\frac{n}{m}) X_{1,m} - \sqrt{\frac{m}{n}} X_{m+1,m+n})
+    (\sqrt(\frac{n}{m}) Y_{1,m} - \sqrt{\frac{m}{n}} Y_{m+1,m+n})
 
    C_{1,m+n} = C_{1,m} + C_{m+1,m+n} +
     \frac{m}{n(m+n)}
