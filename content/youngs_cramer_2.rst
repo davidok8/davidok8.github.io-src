@@ -91,14 +91,14 @@ Summing the two terms:
    C_{1,m+n} = C_{1,m} + C_{m+1,m+n} +
     \frac{1}{(m+n)^2} (   (\frac{n^2}{m} + n) X_{1,m} Y_{1,m}
                         + (\frac{m^2}{n} + m) X_{m+1,m+n} Y_{m+1,m+n}
-                        - (m+n) X_{1,m} Y_{1,m}
-                        - (m+n) X_{m+1,m+n} Y_{m+1,m+n} )
+                        - (m+n) X_{1,m} Y_{m+1,m+n}
+                        - (m+n) X_{m+1,m+n} Y_{1,m} )
 
    C_{1,m+n} = C_{1,m} + C_{m+1,m+n} +
     \frac{1}{(m+n)} (   \frac{n}{m} X_{1,m} Y_{1,m}
                         + \frac{m}{n} X_{m+1,m+n} Y_{m+1,m+n}
-                        - X_{1,m} Y_{1,m}
-                        - X_{m+1,m+n} Y_{m+1,m+n} )
+                        - X_{1,m} Y_{m+1,m+n}
+                        - X_{m+1,m+n} Y_{1,m} )
 
    C_{1,m+n} = C_{1,m} + C_{m+1,m+n} +
     \frac{1}{(m+n)}
