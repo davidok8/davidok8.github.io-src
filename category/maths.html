@@ -51,12 +51,12 @@
 
     <div class='row-fluid''>
         <div class="article-title span9">
-            <a href="../Youngs and Cramer.html"><h1>Youngs and Cramer Recursive Formula</h1></a>
+            <a href="../Youngs and Cramer's covariance matrix formula..html"><h1>Youngs and Cramer Recursive Formula: Extension to Covariance Matrix</h1></a>
         </div>
     </div>
     <div class="row-fluid">
       <div class="span2">
-<p>Tue 07 March 2017 </p>
+<p>Thu 09 March 2017 </p>
 
 <p style="text-align: left;">
 Filed under <a href="../category/maths.html">maths</a>
@@ -68,89 +68,116 @@ Filed under <a href="../category/maths.html">maths</a>
 </p>
       </div>
       <div class="article-content span8">
-	<div class="math">
-\begin{equation*}
-S_{1, m+n} = \sum_{i=1}^{m+n} (x_i - \frac{1}{m+n} T_{1, m+n})^2
-\end{equation*}
-</div>
-<div class="math">
-\begin{equation*}
-S_{1, m+n} =
- \underbrace{\sum_{i=1}^{m} (x_i - \frac{1}{m+n} T_{1,m+n})^2}_{A_{m,n}} +
- \underbrace{\sum_{i=m+1}^{m+n} (x_i - \frac{1}{m+n} T_{1, m+n})^2}_{B_{m,n}}
-\end{equation*}
-</div>
-<p>Denote by</p>
-<div class="math">
-\begin{equation*}
-A_{m,n} = \sum_{i=1}^{m} (x_i - \frac{1}{m} T_{1, m+n})^2
-\end{equation*}
-</div>
-<div class="math">
-\begin{equation*}
-B_{m,n} = \sum_{i=m+1}^{m+n} (x_i - \frac{1}{m} T_{1, m+n})^2
-\end{equation*}
-</div>
-<p>Then we expand <span class="math">\(A_{m,n}\)</span> by introducing <span class="math">\(\frac{1}{m} T_{1,m}\)</span></p>
-<div class="math">
-\begin{equation*}
-A_{m,n} = \sum_{i=1}^{m} (x_i - \frac{1}{m} T_{1,m} +
-\frac{1}{m} T_{1,m} - \frac{1}{m+n} T_{1, m+n})^2
-\end{equation*}
-</div>
-<p>We end up with</p>
-<div class="math">
-\begin{equation*}
-A_{m,n} = S_{1,m} + m (\frac{1}{m} T_{1,m} - \frac{1}{m+n} T_{1,m+n})^2
-\end{equation*}
-</div>
-<p>Then using <span class="math">\(T_{1,m+n} = T_{1,m} + T_{m+1,n+1}\)</span></p>
-<div class="math">
-\begin{equation*}
-A_{m,n} = S_{1,m} + \frac{m}{(m+n)^2} (\frac{n}{m} T_{1,m} - T_{m+1,m+n})^2
-\end{equation*}
-</div>
-<p>Likewise we expand <span class="math">\(B_{m,n}\)</span> by introducing <span class="math">\(\frac{1}{n} T_{m+1,m+n}\)</span></p>
-<div class="math">
-\begin{equation*}
-B_{m,n} = S_{m+1,m+n} + n (\frac{1}{n} T_{m+1,m+n} - \frac{1}{m+n} T_{1,m+n})^2
-\end{equation*}
-</div>
-<div class="math">
-\begin{equation*}
-B_{m,n} = S_{m+1,m+n} + \frac{n}{(m+n)^2} (\frac{m}{n} T_{m+1,m+n} - T_{1,m})^2
-\end{equation*}
-</div>
-<p>Substituting back <span class="math">\(A_{m,n}\)</span> and <span class="math">\(B_{m,n}\)</span> in <span class="math">\(S_{m,n}\)</span></p>
-<div class="math">
-\begin{equation*}
-S_{1,m+n} = S_{1,m} + S_{m+1,m+n} + \frac{1}{(m+n)^2} \left(
-   \frac{(m+n)n}{m} T_{1,m}^2
- + \frac{(m+n)n}{m} T_{m+1,m+n}^2
- - 2(m+n) T_{1,m} T_{m+1,m+n}
-\right)
-\end{equation*}
-</div>
-<div class="math">
-\begin{equation*}
-S_{1,m+n} = S_{1,m} + S_{m+1,m+n} + \frac{1}{m+n} \left(
-   \frac{n}{m} T_{1,m}^2
- + \frac{m}{n} T_{m+1,m+n}^2
-\right)
-\end{equation*}
-</div>
-<div class="math">
-\begin{equation*}
-S_{1,m+n} = S_{1,m} + S_{m+1,m+n} + \frac{1}{m+n} \left(
-   \sqrt{\frac{n}{m}} T_{1,m} - \sqrt{\frac{m}{n}} T_{m+1,m+n}
-\right)^2
-\end{equation*}
-</div>
+	<p>Previously we showed that the sum of square differences
+<span class="math">\(S_{1,n} = \sum_{i=1}^n (x_i - \frac{1}{n} T_{1,n})^2\)</span>, where
+<span class="math">\(T_{1,n} = \sum_{i=1}^n x_i\)</span> satisfies the following
+recursive equality</p>
 <div class="math">
 \begin{equation*}
 S_{1,m+n} = S_{1,m} + S_{m+1,m+n} + \frac{m}{(m+n)n} \left(
    \frac{n}{m} T_{1,m} - T_{m+1,m+n}
 \right)^2
+\end{equation*}
+</div>
+<p>Denoting by <span class="math">\(X_{1,n} = \sum_{i=1}^n x_i\)</span> and <span class="math">\(Y_{1,n} = \sum_{i=1}^n y_i\)</span>,
+Let us show that the sum of products</p>
+<div class="math">
+\begin{equation*}
+C_{1,n} = \sum_{i=1}^n (x_i - \frac{1}{n} X_{1,n})
+                       (y_i - \frac{1}{n} Y_{1,n})
+\end{equation*}
+</div>
+<p>satisfies the following recursive equality</p>
+<div class="math">
+\begin{equation*}
+C_{1,m+n} = C_{1,m} + C_{m+1,m+n} + \frac{m}{(m+n)n}
+   \left( \frac{n}{m} X_{1,m} - X_{m+1,m+n} \right)
+   \left( \frac{n}{m} Y_{1,m} - Y_{m+1,m+n} \right)
+\end{equation*}
+</div>
+<p>Notice the similarity between the two recursive formula between <span class="math">\(S_{1,n}\)</span>
+and <span class="math">\(C_{1,n}\)</span>.</p>
+<p>We use exactly the same technique as in the recursive formula of
+<span class="math">\(S_{1,n}\)</span>.</p>
+<div class="math">
+\begin{equation*}
+C_{1,m+n} = \sum_{i=1}^{m+n} (x_i - \frac{1}{m+n} X_{1,m+n})(y_i -
+\frac{1}{m+n} Y_{1_,m+n})
+\end{equation*}
+</div>
+<p>We break down <span class="math">\(C_{1,m+n}\)</span> into two terms</p>
+<div class="math">
+\begin{equation*}
+A_{m,n} = \sum_{i=1}^{m} (x_i - \frac{1}{m+n} X_{1,m+n})(y_i -
+\frac{1}{m+n} Y_{1_,m+n})
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+B_{m,n} = \sum_{i=m+1}^{m+n} (x_i - \frac{1}{m+n} X_{1,m+n})(y_i -
+\frac{1}{m+n} Y_{1_,m+n})
+\end{equation*}
+</div>
+<p>Expanding the two terms</p>
+<div class="math">
+\begin{equation*}
+A_{m,n} = C_{1,m} + m(\frac{1}{m} X_{1,m} - \frac{1}{m+n} X_{m+1,m+n})
+                     (\frac{1}{m} Y_{1,m} - \frac{1}{m+n} Y_{m+1,m+n})
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+B_{m,n} = C_{m+1,m+n} + n(\frac{1}{n} X_{m+1,m+n} - \frac{1}{m+n} X_{1,m})
+                         (\frac{1}{n} Y_{m+1,m+n} - \frac{1}{m+n} Y_{1,m})
+\end{equation*}
+</div>
+<p>Expanding again:</p>
+<div class="math">
+\begin{equation*}
+A_{m,n} = C_{1,m} + \frac{m}{(m+n)^2}
+ (  \frac{n^2}{m^2} X_{1,m} Y_{1,m} + X_{m+1,m+n} Y_{m+1,m+n}
+  - \frac{n}{m} X_{m+1,m+n} Y_{1,m} - \frac{n}{m} X_{m+1,m+n} Y_{m+1,m+n})
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+B_{m,n} = C_{m+1,m+n} + \frac{n}{(m+n)^2}
+ (  \frac{m^2}{n^2} X_{m+1,m+n} Y_{m+1,m+n} + X_{1,m} Y_{1,m}
+  - \frac{m}{n} X_{m+1,m+n} Y_{1,m} - \frac{m}{n} X_{m+1,m+n} Y_{m+1,m+n})
+\end{equation*}
+</div>
+<p>Summing the two terms:</p>
+<div class="math">
+\begin{equation*}
+C_{1,m+n} = C_{1,m} + C_{m+1,m+n} +
+ \frac{1}{(m+n)^2} (   (\frac{n^2}{m} + n) X_{1,m} Y_{1,m}
+                     + (\frac{m^2}{n} + m) X_{m+1,m+n} Y_{m+1,m+n}
+                     - (m+n) X_{1,m} Y_{1,m}
+                     - (m+n) X_{m+1,m+n} Y_{m+1,m+n} )
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+C_{1,m+n} = C_{1,m} + C_{m+1,m+n} +
+ \frac{1}{(m+n)} (   \frac{n}{m} X_{1,m} Y_{1,m}
+                     + \frac{m}{n} X_{m+1,m+n} Y_{m+1,m+n}
+                     - X_{1,m} Y_{1,m}
+                     - X_{m+1,m+n} Y_{m+1,m+n} )
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+C_{1,m+n} = C_{1,m} + C_{m+1,m+n} +
+ \frac{1}{(m+n)}
+ (\sqrt(\frac{n}{m}) X_{1,m} - \sqrt{\frac{m}{n}} X_{m+1,m+n})
+ (\sqrt(\frac{n}{m}) Y_{1,m} - \sqrt{\frac{m}{n}} Y_{m+1,m+n})
+\end{equation*}
+</div>
+<div class="math">
+\begin{equation*}
+C_{1,m+n} = C_{1,m} + C_{m+1,m+n} +
+ \frac{m}{n(m+n)}
+ (\frac{n}{m} X_{1,m} - X_{m+1,m+n}) (\frac{n}{m} Y_{1,m} - Y_{m+1,m+n})
 \end{equation*}
 </div>
 <script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
@@ -210,13 +237,47 @@ S_{1,m+n} = S_{1,m} + S_{m+1,m+n} + \frac{m}{(m+n)n} \left(
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 </script> 
-	<a class="btn btn-mini xsmall" href="../Youngs and Cramer.html">
+	<a class="btn btn-mini xsmall" href="../Youngs and Cramer's covariance matrix formula..html">
           <i class="icon-comment"></i> Comment </a>
 	<hr />
       </div>
       
     </div>
     
+
+ 
+        
+
+
+
+    <div class='row-fluid'>
+      <div class='article-title span9'> 
+        <a href="../Youngs and Cramer.html"><h1>Youngs and Cramer Recursive Formula</h1></a>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2">
+<p>Tue 07 March 2017 </p>
+
+<p style="text-align: left;">
+Filed under <a href="../category/maths.html">maths</a>
+</p>
+<p style="text-align: left;">
+ 
+    Tags <a href="../tag/calculus.html">calculus</a> </p>
+<p>
+</p>
+      </div>
+      <div class="summary span8">
+	<p class="first last">Calculus details of Youngs And Cramer's recursive variance formula</p>
+ 
+	<a class="btn btn-mini xsmall" href="../Youngs and Cramer.html">
+          <i class="icon-plus-sign"></i> Read More </a>
+	<hr />
+      </div>
+      
+    </div>
+      
 
  
         
